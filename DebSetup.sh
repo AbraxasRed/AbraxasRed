@@ -17,6 +17,7 @@ sudo snap install viber-unofficial
 #get programs 
 sudo apt-get install wget -y
 sudo apt-get install gimp -y
+sudo apt-get install bittorrent-gui -y
 sudo apt-get install chromium -y 
 sudo apt-get install vlc -y
 sudo apt-get install tor -y
