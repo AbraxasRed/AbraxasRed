@@ -1,3 +1,30 @@
+#!/usr/bin/python
 import time
 import board
 import adafruit_dht
+import MySQLdb
+
+dhtDevice = adafruit_dht.DHT11(board.D22)
+host_ip = ""
+user = ""
+pass = ""
+database = ""
+
+connect = MySQLdb.connect(host= "host_ip",user= "user",passwd="pass",db="database")
+c = connect.cursor()
+
+while True:
+	temp = dhtDevice.temperature
+  hum = dhtDevice.humidity
+  try:
+		c.execute("""INSERT INTO PY1.DUMP1(temp_c,rec_time,rec_date) VALUES(%s,%s,%s)""",(valT,time,date))
+		connect.commit()
+	except:
+		db.rollback()
+
+	time.sleep(10.0)
+
+c.close()
+connect.close()
+
+
